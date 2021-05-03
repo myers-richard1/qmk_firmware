@@ -50,7 +50,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 //this is the layout used when the left modifier is down
 [_LOWER] = LAYOUT( \
-  _______, _______, _______, _______, _______, _______,                   _______, _______, _______,_______, _______, _______,\
+  KC_GRV, _______, _______, _______, _______, _______,                   _______, _______, _______,_______, _______, _______,\
   KC_F1,   KC_F2,   KC_F3,   KC_F4,   KC_F5,   KC_F6,                     KC_F7,   KC_7,   KC_8,   KC_9,  KC_F11,  KC_BSLASH, \
   KC_GRV, KC_EXLM, KC_AT,   KC_HASH, KC_DLR,  KC_PERC,                   KC_CIRC, KC_4, KC_5, KC_6, KC_RPRN, KC_TILD, \
   _______, _______, _______, _______, _______, _______, _______, _______, XXXXXXX, KC_1, KC_2, KC_3, KC_RCBR, KC_RSFT, \
@@ -73,8 +73,8 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
 
 //this is the layer activated by the right half of the board
 [_RAISE] = LAYOUT( \
-  _______, KC_F1, KC_F2, KC_F3, KC_F4, _______,                     _______, _______, _______, _______, _______, _______, \
-  KC_GRV,  KC_1,    KC_2,    KC_UP,    KC_4,    KC_5,                        KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______, \
+  KC_GRV, KC_F1, KC_F2, KC_F3, KC_F4, _______,                     _______, _______, _______, _______, _______, _______, \
+  _______,  KC_1,    KC_2,    KC_UP,    KC_4,    KC_5,                        KC_6,    KC_7,    KC_8,    KC_9,    KC_0,    _______, \
   KC_LCTRL,  KC_F2,    KC_LEFT,   KC_DOWN,   KC_RIGHT,   KC_F6,              XXXXXXX, KC_LEFT, KC_DOWN, KC_UP,   KC_RGHT, XXXXXXX, \
   KC_CLCK,   KC_F8,   KC_F9,   KC_F10,  KC_F11,  KC_F12,   KC_HOME, KC_END,  KC_PLUS, KC_MINS, KC_EQL,  KC_LBRC, KC_RBRC, KC_BSLS, \
                              KC_LWIN, _______, KC_BSPC,  _______, _______,  _______, KC_LALT, _______ \

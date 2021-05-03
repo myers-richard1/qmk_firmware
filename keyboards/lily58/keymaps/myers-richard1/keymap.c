@@ -129,11 +129,12 @@ const char *read_keylogs(void);
 // If you want to change the display of OLED, you need to change here
 void oled_task_user(void) {
   if (is_keyboard_master()) {
-    
+    //write layer state
     oled_write_ln(read_layer_state(), false);
-
+    //show trainer animation
     animationTick();
   } else {
+    //draw lily logo and scroll
     oled_write(read_logo(), false);
     oled_scroll_left();
   }

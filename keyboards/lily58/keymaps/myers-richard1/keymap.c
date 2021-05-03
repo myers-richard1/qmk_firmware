@@ -132,7 +132,7 @@ void oled_task_user(void) {
     //write layer state
     oled_write_ln(read_layer_state(), false);
     //write caps lock state
-    oled_write("CAPS", host_keyboard_led_state().caps_lock);
+    oled_write("caps", host_keyboard_led_state().caps_lock);
     //show trainer animation
     animationTick();
   } else {

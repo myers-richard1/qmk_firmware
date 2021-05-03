@@ -126,18 +126,11 @@ void set_keylog(uint16_t keycode, keyrecord_t *record);
 const char *read_keylog(void);
 const char *read_keylogs(void);
 
-const char *message;
-
-
 // If you want to change the display of OLED, you need to change here
 void oled_task_user(void) {
   if (is_keyboard_master()) {
     
-    oled_write_ln(read_layer_state(), false);  
-    message = "";
-    oled_write_ln(message, false);
-    oled_write_ln(message, false);
-    oled_write_ln(message, false);
+    oled_write_ln(read_layer_state(), false);
 
     animationTick();
   } else {

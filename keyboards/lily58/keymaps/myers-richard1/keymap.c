@@ -132,32 +132,29 @@ const char *read_keylogs(void);
 // void set_timelog(void);
 // const char *read_timelog(void);
 const char *message;
-int count = 0;
+const char *spriteToDraw = trainer;
 
+uint32_t timer = 0;
+uint32_t frameDuration = 250;
 void oled_task_user(void) {
   if (is_keyboard_master()) {
     // If you want to change the display of OLED, you need to change here
-    //oled_write_ln(read_layer_state(), false); 
-    message = "hey";
-    oled_write_ln(message, false);  
+    oled_write_ln(read_layer_state(), false);  
     message = "";
     oled_write_ln(message, false);
     oled_write_ln(message, false);
     oled_write_ln(message, false);
-    message = "am";
-    oled_write_ln(message, false);
-    message = "key";
-    oled_write_ln(message, false);
-    message = "board";
-    oled_write_ln(message, false); 
-    count++;
-    if (count < 100){
-      oled_write_raw_P(trainer, 128);
+
+    //if the elapsed time is greater than the frame duration
+    if (timer_elapsed32(timer) > frameDuration){
+      //set timer to the current time
+      timer = timer_read32();
+      //change frames
+      if (spriteToDraw == trainer) spriteToDraw = trainer2;
+      else spriteToDraw = trainer;
     }
-    else if (count < 200){
-      oled_write_raw_P(trainer2, 128);
-    }
-    else count = 0;
+    //message = trainer;
+    oled_write_raw_P(spriteToDraw, 128);
     //oled_write_ln(read_keylog(), false);
     //oled_write_ln(read_keylogs(), false); 
     //these were originally commented out

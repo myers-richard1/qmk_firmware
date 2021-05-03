@@ -1,4 +1,5 @@
 #include QMK_KEYBOARD_H
+#include "animator.h"
 
 enum layer_number {
   _QWERTY = 0,
@@ -134,10 +135,10 @@ const char *read_keylogs(void);
 const char *message;
 const char *spriteToDraw = trainer;
 
-uint32_t timer = 0;
 uint32_t frameDuration = 250;
 void oled_task_user(void) {
   if (is_keyboard_master()) {
+    animationTick();
     // If you want to change the display of OLED, you need to change here
     oled_write_ln(read_layer_state(), false);  
     message = "";
@@ -146,11 +147,12 @@ void oled_task_user(void) {
     oled_write_ln(message, false);
 
     //if the elapsed time is greater than the frame duration
-    if (timer_elapsed32(timer) > frameDuration){
+    if (timer_elapsed32(millisecondsSinceLastFrameChange) > frameDuration){
       //set timer to the current time
-      timer = timer_read32();
-      //change frames
+      millisecondsSinceLastFrameChange = timer_read32();
+      //change frames. if spriteToDraw is frame 1, switch it to frame2.
       if (spriteToDraw == trainer) spriteToDraw = trainer2;
+      //else if it's frame 2, switch it to frame 1
       else spriteToDraw = trainer;
     }
     //message = trainer;

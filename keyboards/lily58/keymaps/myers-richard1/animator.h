@@ -8,7 +8,9 @@ static const char PROGMEM trainer2[128]={0x00,0x00,0x00,0x00,0x00,0x00,0xc0,0xc0
 uint32_t millisecondsSinceLastFrameChange = 0;
 uint32_t frameDuration = 200;
 const char *spriteToDraw = trainer;
+int current_wpm = 0;
 void animationTick(void){
+    current_wpm = get_current_wpm();
     //if the elapsed time is greater than the frame duration
     if (timer_elapsed32(millisecondsSinceLastFrameChange) > frameDuration){
       //set timer to the current time

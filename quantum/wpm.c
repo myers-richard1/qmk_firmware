@@ -56,9 +56,13 @@ void update_wpm(uint16_t keycode) {
     }
 }
 
+static float decay_rate = .25;
 void decay_wpm(void) {
     if (timer_elapsed(wpm_timer) > 1000) {
-        current_wpm = (0 - current_wpm) * wpm_smoothing + current_wpm;
+        //decay_rate was previously the smoothing factor, but i turned it up to make it decay more quickly. 
+        //i think this'll make it less accurate for a couple seconds on the way back up if you start typing before it 
+        //resets to 0
+        current_wpm = (0 - current_wpm) * decay_rate + current_wpm;
         wpm_timer   = timer_read();
     }
 }

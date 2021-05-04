@@ -12,7 +12,7 @@ int current_wpm = 0;
 void animationTick(void){
     current_wpm = get_current_wpm();
     //if the wpm is too low, just draw the standing sprite
-    if (current_wpm < 10) spriteToDraw = trainer;
+    if (current_wpm < 30) spriteToDraw = trainer;
     //else if the elapsed time is greater than the frame duration, change frames
     else if (timer_elapsed32(millisecondsSinceLastFrameChange) > frameDuration){
       //set timer to the current time

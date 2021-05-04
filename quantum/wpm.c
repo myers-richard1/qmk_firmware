@@ -56,13 +56,14 @@ void update_wpm(uint16_t keycode) {
     }
 }
 
-static float decay_rate = .25;
+//this is the percentage of the current wpm that you lose every second you aren't typing
+#define DECAY_RATE .25
 void decay_wpm(void) {
     if (timer_elapsed(wpm_timer) > 1000) {
         //decay_rate was previously the smoothing factor, but i turned it up to make it decay more quickly. 
         //i think this'll make it less accurate for a couple seconds on the way back up if you start typing before it 
         //resets to 0
-        current_wpm = (0 - current_wpm) * decay_rate + current_wpm;
+        current_wpm = (0 - current_wpm) * DECAY_RATE + current_wpm;
         wpm_timer   = timer_read();
     }
 }

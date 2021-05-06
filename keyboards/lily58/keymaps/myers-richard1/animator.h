@@ -26,7 +26,7 @@ void animationTick(void){
 static int frame_manip_keys[] =   {30,   40,   50,   60,   70,   80};
 static int frame_manip_values[] = {600,  500,  400,  300,  200,  100};
 void determine_sprite(void){
-  //else if the wpm is slower than the bike animation, smooth the walk speed
+  //if the wpm is slower than the bike animation, smooth the walk speed
   if (current_wpm < 80){
     //loop through our walk speeds
     for (int i = 0; i < 6; i++){
@@ -50,4 +50,3 @@ void determine_sprite(void){
     else spriteToDraw = trainer;
   }
 }
-

@@ -1,6 +1,6 @@
 #include QMK_KEYBOARD_H
-#include "animator.h"
 #include <stdio.h>
+#include "oled_handler.h"
 
 enum layer_number {
   _QWERTY = 0,
@@ -91,29 +91,8 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
   return OLED_ROTATION_270;
 }
 
-// When you add source files to SRC in rules.mk, you can use functions.
-const char *read_layer_state(void);
-const char *read_logo(void);
-
 // If you want to change the display of OLED, you need to change here
 void oled_task_user(void) {
-  if (is_keyboard_master()) {
-    //write layer state
-    oled_write_ln(read_layer_state(), false);
-    //write caps lock state
-    oled_write("caps", host_keyboard_led_state().caps_lock);
-    //show trainer animation
-    animationTick();
-    char wpm_str[8];
-    sprintf(wpm_str, "%03d", current_wpm);
-    oled_set_cursor(0, 12);
-    char message[] = "wpm: ";
-    oled_write_ln(message, false);
-    oled_write_ln(wpm_str, false);
-  } else {
-    //draw lily logo and scroll
-    oled_write(read_logo(), false);
-    oled_scroll_left();
-  }
+  update_oled();
 }
 #endif // OLED_DRIVER_ENABLE

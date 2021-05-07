@@ -6,7 +6,6 @@ enum layer_number {
   _QWERTY = 0,
   _LOWER,
   _RAISE,
-  _ADJUST,
 };
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
@@ -79,32 +78,12 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   KC_LCTRL, XXXXXXX,  KC_LEFT,  KC_DOWN,  KC_RIGHT, XXXXXXX,                      XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, \
   KC_LSFT,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  XXXXXXX,  KC_HOME,  KC_END,   XXXXXXX, XXXXXXX, XXXXXXX,  XXXXXXX, XXXXXXX, KC_RSFT, \
                           KC_LWIN,  XXXXXXX,  KC_BSPC,  XXXXXXX,            XXXXXXX,  XXXXXXX,  KC_LALT,  XXXXXXX \
-),
-/* ADJUST
- * ,-----------------------------------------.                    ,-----------------------------------------.
- * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |                    |      |      |      |      |      |      |
- * |------+------+------+------+------+------|                    |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------.    ,-------|      |      |RGB ON| HUE+ | SAT+ | VAL+ |
- * |------+------+------+------+------+------|       |    |       |------+------+------+------+------+------|
- * |      |      |      |      |      |      |-------|    |-------|      |      | MODE | HUE- | SAT- | VAL- |
- * `-----------------------------------------/       /     \      \-----------------------------------------'
- *                   | LAlt | LGUI |LOWER | /Space  /       \Enter \  |RAISE |BackSP| RGUI |
- *                   |      |      |      |/       /         \      \ |      |      |      |
- *                   `----------------------------'           '------''--------------------'
- */
-  [_ADJUST] = LAYOUT( \
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,                   XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, \
-  XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX, XXXXXXX,\
-                             _______, _______, _______, _______, _______,  _______, _______, _______ \
-  )
+)
 };
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-  return update_tri_layer_state(state, _LOWER, _RAISE, _ADJUST);
+  return state;
+  //return update_tri_layer_state(state, _LOWER, _RAISE);
 }
 
 //SSD1306 OLED update loop, make sure to enable OLED_DRIVER_ENABLE=yes in rules.mk

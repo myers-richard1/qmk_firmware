@@ -1,5 +1,4 @@
 #include QMK_KEYBOARD_H
-#include <stdio.h>
 #include "oled_handler.h"
 
 enum layer_number {

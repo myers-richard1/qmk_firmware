@@ -25,10 +25,10 @@ const char *read_layer_state(void) {
     break;
   case L_ADJUST:
   case L_ADJUST_TRI:
-    snprintf(layer_state_str, sizeof(layer_state_str), "Adjst");
+    snprintf(layer_state_str, sizeof(layer_state_str), "FFXIV");
     break;
   default:
-    snprintf(layer_state_str, sizeof(layer_state_str), "Layer: Undef-%ld", layer_state);
+    snprintf(layer_state_str, sizeof(layer_state_str), "Undef");
   }
 
   return layer_state_str;
